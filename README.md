@@ -1,2 +1,1 @@
-# housessoldeasily.com
-
+npm install and npm start
