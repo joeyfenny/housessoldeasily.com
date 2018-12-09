@@ -10,10 +10,7 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     session = require("express-session"),
-    seedDB      = require("./seeds"),
     methodOverride = require("method-override");
-
-require('newrelic');
 
 // configure dotenv
 require('dotenv').load();
