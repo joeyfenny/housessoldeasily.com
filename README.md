@@ -1,1 +1,1 @@
-npm install and npm start
+npm install then node housessoldeasily.js

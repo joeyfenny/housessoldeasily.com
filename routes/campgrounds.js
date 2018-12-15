@@ -80,8 +80,6 @@ router.post("/", isLoggedIn, isSafe, function(req, res) {
       if (err) {
         console.log(err);
       } else {
-        //redirect back to campgrounds page
-        console.log(newlyCreated);
         res.redirect('/campgrounds');
       }
     });
