@@ -49,7 +49,7 @@ router.get("/", function(req, res) {
 });
 
 //CREATE - add new lead to DB, route=/leads/
-router.post("/new", isLoggedIn, isSafe, function(req, res) {
+router.post("/new", isSafe, function(req, res) {
   // get data from form and add to leads array
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
