@@ -262,7 +262,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- START SLIDER -->
+	<!-- END SLIDER -->
 
 	<!-- START REVOLUTION SLIDER 5.0.7 fullwidth mode -->
 	<div id="rev_slider_home_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="news-gallery34" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
@@ -285,7 +285,7 @@
 						We'll reach out to our network to help get your house sold.
 					</div>
 					<!-- LAYER NR. 4 -->
-					<div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0" id="slide-1-layer-4" data-x="['left','left','left','left']" data-hoffset="['53','53','53','30']" data-y="['top','top','top','top']" data-voffset="['360','290','260','260']" data-fontsize="['18','18','16','16']" data-lineheight="['30','30','30','30']" data-fontweight="['600','600','600','600']" data-width="['700','650','600','420']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="margin-top: 100px; z-index: 7; white-space: nowrap;"><a href="learnmore" class="btn btn-default btn-theme-colored2 btn-xl">Learn More</a> <a href="getanoffer" class="btn btn-dark btn-theme-colored btn-xl">Get An Offer</a>
+					<div class="tp-caption tp-resizeme text-white rs-parallaxlevel-0" id="slide-1-layer-4" data-x="['left','left','left','left']" data-hoffset="['53','53','53','30']" data-y="['top','top','top','top']" data-voffset="['360','290','260','260']" data-fontsize="['18','18','16','16']" data-lineheight="['30','30','30','30']" data-fontweight="['600','600','600','600']" data-width="['700','650','600','420']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="auto:auto;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-mask_out="x:0;y:0;s:inherit;e:inherit;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="margin-top: 100px; z-index: 7; white-space: nowrap;"><a href="learnmore" class="btn btn-default btn-theme-colored2 btn-xl">Learn More</a> <a href="/leads" class="btn btn-dark btn-theme-colored btn-xl">Get An Offer</a>
 					</div>
 				</li>
 			</ul>
@@ -298,580 +298,549 @@
 	<section class="main-search-field">
 		<div class="container">
 			<h3><center>Fill out this form to get an offer in 24 hours.</center></h3>
+			<form action="/leads/new" method="POST">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="First Name">
+						<input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="Last Name">
+						<input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name">
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
 						<div class="at-col-default-mar">
-							<input type="text" name="" value="" placeholder="Email">
+							<input class="form-control" type="text" name="email" id="email" placeholder="Email">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="Phone Number">
+						<input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="Street Address">
+						<input class="form-control" type="text" name="streetAddress" id="streetAddress" placeholder="Street Address">
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="Zip Code">
+						<input class="form-control" type="text" name="city" id="city" placeholder="City">
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
 						<div class="at-col-default-mar">
-							<input type="text" name="" value="" placeholder="Email">
+							<input class="form-control" type="text" name="state" id="state" placeholder="State">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar">
-						<input type="text" name="" value="" placeholder="Phone Number">
+						<input class="form-control" type="text" name="zipCode" id="zipCode" placeholder="Zip Code">
 					</div>
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-lg-3 col-md-6 b-search__main-form label">
+					<input type="text" disabled class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
+					<div class="slider-range"></div>
+				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="at-col-default-mar no-mb">
-						<select>
-							<option value="0" selected>Baths</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>
-					</div>
-				</div>
-				<div class="col-lg-3 no-pds">
-					<div class="at-col-default-mar no-mb">
-						<select>
-							<option value="0" selected>Baths</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>					</div>
-					</div>
-					<div class="col-lg-3 col-md-6 b-search__main-form label">
-						<input type="text" disabled class="slider_amount m-t-lg-30 m-t-xs-0 m-t-sm-10">
-						<div class="slider-range"></div>
-					</div>
-					<div class="col-lg-3 col-md-6">
-						<div class="at-col-default-mar no-mb">
-							<button class="btn btn-default hvr-bounce-to-right" type="submit">Submit</button>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- END SECTION SEARCH AREA -->
-
-			<!-- START SECTION POPULAR LOCATIONS -->
-			<section class="popular-places">
-				<div class="container">
-					<div class="section-title">
-						<h2>Top Locations</h2>
-						<h3>Right Now</h3>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<!-- Image Box -->
-							<a href="index" class="img-box">
-								<img src="/images/popular-places/1.jpg" class="img-responsive" alt="">
-								<div class="img-box-content visible">
-									<h4>New York City </h4>
-									<span>203 Properties</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-8 col-md-6">
-							<!-- Image Box -->
-							<a href="index" class="img-box">
-								<img src="/images/popular-places/2.jpg" class="img-responsive" alt="">
-								<div class="img-box-content visible">
-									<h4>Los Angeles</h4>
-									<span>307 Properties</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-8 col-md-6">
-							<!-- Image Box -->
-							<a href="index" class="img-box no-mb">
-								<img src="/images/popular-places/3.jpg" class="img-responsive" alt="">
-								<div class="img-box-content visible">
-									<h4>San Francisco </h4>
-									<span>409 Properties</span>
-								</div>
-							</a>
-						</div>
-						<div class="col-lg-4 col-md-6">
-							<!-- Image Box -->
-							<a href="index" class="img-box no-mb x3">
-								<img src="/images/popular-places/4.jpg" class="img-responsive" alt="">
-								<div class="img-box-content visible">
-									<h4>Miami</h4>
-									<span>507 Properties</span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- END SECTION POPULAR PLACES -->
-
-			<!-- START SECTION TESTIMONIALS -->
-			<section class="testimonials">
-				<div class="container">
-					<div class="section-title col-md-5">
-						<h2>What Customers</h2>
-						<h3>Have Said</h3>
-					</div>
-					<div class="owl-carousel style1">
-						<div class="test-1">
-							<h3>Lisa S.</h3>
-							<img src="/images/testimonials/ts-1.jpg" alt="">
-							<h6 class="mt-2">New York</h6>
-							<ul class="starts text-center mb-2">
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-							</ul>
-							<p>I received cash for my house in less than a week.</p>
-						</div>
-						<div class="test-1">
-							<h3>John M.</h3>
-							<img src="/images/testimonials/ts-2.jpg" alt="">
-							<h6 class="mt-2">Los Angeles</h6>
-							<ul class="starts text-center mb-2">
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-							</ul>
-							<p>My house sat on the market for months. HousesSoldEasily had it gone in a couple of days.</p>
-						</div>
-						<div class="test-1">
-							<h3>Mary D.</h3>
-							<img src="/images/testimonials/ts-3.jpg" alt="">
-							<h6 class="mt-2">Chicago</h6>
-							<ul class="starts text-center mb-2">
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-							</ul>
-							<p>They bought my house as in. I didn't need to make a single repair.</p>
-						</div>
-						<div class="test-1">
-							<h3>Gary S.</h3>
-							<img src="/images/testimonials/ts-4.jpg" alt="">
-							<h6 class="mt-2">Philadelphia</h6>
-							<ul class="starts text-center mb-2">
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-								<li><i class="fa fa-star"></i></li>
-							</ul>
-							<p>The whole transaction went way smoother than I had expected. I thought selling your house was supposed to be hard?</p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- END SECTION TESTIMONIALS -->
-
-			<!-- START SECTION COUNTER UP -->
-			<section class="counterup">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-3 col-md-6 col-xs-12">
-							<div class="countr">
-								<i class="fa fa-home stat-icon" aria-hidden="true"></i>
-								<div class="count-me">
-									<h3 class="stats-top-text">Over</h3>
-									<br>
-									<p class="counter text-left">3000</p>
-									<h3>Houses Sold</h3>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-xs-12">
-							<div class="countr">
-								<i class="fa fa-list stat-icon" aria-hidden="true"></i>
-								<div class="count-me">
-									<h3 class="stats-top-text">Over</h3>
-									<br>
-									<p class="counter text-left">100</p>
-									<h3>Listings Daily</h3>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-xs-12">
-							<div class="countr mb-0">
-								<i class="fa fa-users stat-icon" aria-hidden="true"></i>
-								<div class="count-me">
-									<h3 class="stats-top-text">Over</h3>
-									<br>
-									<p class="counter text-left">2000</p>
-									<h3>Expert Agents</h3>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-xs-12">
-							<div class="countr mb-0 last">
-								<i class="fa fa-trophy stat-icon" aria-hidden="true"></i>
-								<div class="count-me">
-									<h3 class="stats-top-text">Over</h3>
-									<br>
-									<p class="counter text-left">10</p>
-									<h3>Awards Won</h3>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- END SECTION COUNTER UP -->
-
-			<!-- STAR SECTION PARTNERS -->
-			<div class="partners">
-				<div class="container">
-					<div class="section-title">
-						<h2>Partners</h2>
-						<h3>We Work With</h3>
-					</div>
-					<div class="owl-carousel style2">
-						<div class="owl-item"><img src="/images/partners/1.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/2.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/3.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/4.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/5.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/6.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/7.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/8.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/9.png" alt=""></div>
-						<div class="owl-item"><img src="/images/partners/10.png" alt=""></div>
+						<button class="btn btn-default hvr-bounce-to-right" type="submit">Submit</button>
 					</div>
 				</div>
 			</div>
-			<!-- END SECTION PARTNERS -->
+		</form>
+		</section>
+		<!-- END SECTION SEARCH AREA -->
 
-			<!-- START SECTION NEWSLETTER -->
-			<section class="subscribe">
-				<div class="realhome_subscribe">
-					<div class="realhome container">
-						<h2>Subscribe To Our Newsletter</h2>
-						<div class="row align-center">
-							<div class="col-lg-6 col-md-6">
-								<form class="realhome_form_subscribe mailchimp form-inline" method="post">
-									<input type="email" id="subscribeEmail" name="EMAIL" class="form_email" placeholder="Enter Your Email">
-									<button type="submit" value="Subscribe">Submit</button>
-									<label for="subscribeEmail" class="error"></label>
-									<p class="subscription-success"></p>
-								</form>
+		<!-- START SECTION POPULAR LOCATIONS -->
+		<section class="popular-places">
+			<div class="container">
+				<div class="section-title">
+					<h2>Top Locations</h2>
+					<h3>Right Now</h3>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<!-- Image Box -->
+						<a href="index" class="img-box">
+							<img src="/images/popular-places/1.jpg" class="img-responsive" alt="">
+							<div class="img-box-content visible">
+								<h4>New York City </h4>
+								<span>203 Properties</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-8 col-md-6">
+						<!-- Image Box -->
+						<a href="index" class="img-box">
+							<img src="/images/popular-places/2.jpg" class="img-responsive" alt="">
+							<div class="img-box-content visible">
+								<h4>Los Angeles</h4>
+								<span>307 Properties</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-8 col-md-6">
+						<!-- Image Box -->
+						<a href="index" class="img-box no-mb">
+							<img src="/images/popular-places/3.jpg" class="img-responsive" alt="">
+							<div class="img-box-content visible">
+								<h4>San Francisco </h4>
+								<span>409 Properties</span>
+							</div>
+						</a>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<!-- Image Box -->
+						<a href="index" class="img-box no-mb x3">
+							<img src="/images/popular-places/4.jpg" class="img-responsive" alt="">
+							<div class="img-box-content visible">
+								<h4>Miami</h4>
+								<span>507 Properties</span>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END SECTION POPULAR PLACES -->
+
+		<!-- START SECTION TESTIMONIALS -->
+		<section class="testimonials">
+			<div class="container">
+				<div class="section-title col-md-5">
+					<h2>What Customers</h2>
+					<h3>Have Said</h3>
+				</div>
+				<div class="owl-carousel style1">
+					<div class="test-1">
+						<h3>Lisa S.</h3>
+						<img src="/images/testimonials/ts-1.jpg" alt="">
+						<h6 class="mt-2">New York</h6>
+						<ul class="starts text-center mb-2">
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
+						<p>I received cash for my house in less than a week.</p>
+					</div>
+					<div class="test-1">
+						<h3>John M.</h3>
+						<img src="/images/testimonials/ts-2.jpg" alt="">
+						<h6 class="mt-2">Los Angeles</h6>
+						<ul class="starts text-center mb-2">
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
+						<p>My house sat on the market for months. HousesSoldEasily had it gone in a couple of days.</p>
+					</div>
+					<div class="test-1">
+						<h3>Mary D.</h3>
+						<img src="/images/testimonials/ts-3.jpg" alt="">
+						<h6 class="mt-2">Chicago</h6>
+						<ul class="starts text-center mb-2">
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
+						<p>They bought my house as in. I didn't need to make a single repair.</p>
+					</div>
+					<div class="test-1">
+						<h3>Gary S.</h3>
+						<img src="/images/testimonials/ts-4.jpg" alt="">
+						<h6 class="mt-2">Philadelphia</h6>
+						<ul class="starts text-center mb-2">
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+							<li><i class="fa fa-star"></i></li>
+						</ul>
+						<p>The whole transaction went way smoother than I had expected. I thought selling your house was supposed to be hard?</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END SECTION TESTIMONIALS -->
+
+		<!-- START SECTION COUNTER UP -->
+		<section class="counterup">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="countr">
+							<i class="fa fa-home stat-icon" aria-hidden="true"></i>
+							<div class="count-me">
+								<h3 class="stats-top-text">Over</h3>
+								<br>
+								<p class="counter text-left">3000</p>
+								<h3>Houses Sold</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="countr">
+							<i class="fa fa-list stat-icon" aria-hidden="true"></i>
+							<div class="count-me">
+								<h3 class="stats-top-text">Over</h3>
+								<br>
+								<p class="counter text-left">100</p>
+								<h3>Listings Daily</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="countr mb-0">
+							<i class="fa fa-users stat-icon" aria-hidden="true"></i>
+							<div class="count-me">
+								<h3 class="stats-top-text">Over</h3>
+								<br>
+								<p class="counter text-left">2000</p>
+								<h3>Expert Agents</h3>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-xs-12">
+						<div class="countr mb-0 last">
+							<i class="fa fa-trophy stat-icon" aria-hidden="true"></i>
+							<div class="count-me">
+								<h3 class="stats-top-text">Over</h3>
+								<br>
+								<p class="counter text-left">10</p>
+								<h3>Awards Won</h3>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
-			<!-- END SECTION NEWSLETTER -->
+			</div>
+		</section>
+		<!-- END SECTION COUNTER UP -->
 
-			<!-- START FOOTER -->
-			<footer class="first-footer">
-				<div class="top-footer">
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-3 col-md-6">
-								<div class="netabout">
-									<a href="/index" class="logo">
-										<img src="https://i.imgur.com/CPGnvEY.png" alt="netcom">
-									</a>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus impedit perferendis.</p>
-									<a href="/about" class="btn btn-secondary">Learn More</a>
+		<!-- STAR SECTION PARTNERS -->
+		<div class="partners">
+			<div class="container">
+				<div class="section-title">
+					<h2>Partners</h2>
+					<h3>We Work With</h3>
+				</div>
+				<div class="owl-carousel style2">
+					<div class="owl-item"><img src="/images/partners/1.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/2.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/3.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/4.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/5.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/6.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/7.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/8.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/9.png" alt=""></div>
+					<div class="owl-item"><img src="/images/partners/10.png" alt=""></div>
+				</div>
+			</div>
+		</div>
+		<!-- END SECTION PARTNERS -->
+
+		<!-- START SECTION NEWSLETTER -->
+		<section class="subscribe">
+			<div class="realhome_subscribe">
+				<div class="realhome container">
+					<h2>Subscribe To Our Newsletter</h2>
+					<div class="row align-center">
+						<div class="col-lg-6 col-md-6">
+							<form class="realhome_form_subscribe mailchimp form-inline" method="post">
+								<input type="email" id="subscribeEmail" name="EMAIL" class="form_email" placeholder="Enter Your Email">
+								<button type="submit" value="Subscribe">Submit</button>
+								<label for="subscribeEmail" class="error"></label>
+								<p class="subscription-success"></p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END SECTION NEWSLETTER -->
+
+		<!-- START FOOTER -->
+		<footer class="first-footer">
+			<div class="top-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-6">
+							<div class="netabout">
+								<a href="/index" class="logo">
+									<img src="https://i.imgur.com/CPGnvEY.png" alt="netcom">
+								</a>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus impedit perferendis.</p>
+								<a href="/about" class="btn btn-secondary">Learn More</a>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="navigation">
+								<h3>Navigation</h3>
+								<div class="nav-footer">
+									<ul>
+										<li><a href="/index">Home</a></li>
+										<li><a href="index">Get An Offer</a></li>
+										<li><a href="/properties-full-list">Learn More</a></li>
+										<li><a href="/properties-details">FAQ</a></li>
+										<li class="no-mgb"><a href="/agents-listing-grid">Blog</a></li>
+									</ul>
+									<ul class="nav-right">
+										<li><a href="/agent-details">Testimonials</a></li>
+										<li><a href="/about">Locations</a></li>
+										<li><a href="/blog">Disclaimer</a></li>
+										<li><a href="/blog-details">Press</a></li>
+										<li class="no-mgb"><a href="/contact-us">Support</a></li>
+									</ul>
 								</div>
 							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="navigation">
-									<h3>Navigation</h3>
-									<div class="nav-footer">
-										<ul>
-											<li><a href="/index">Home</a></li>
-											<li><a href="index">Get An Offer</a></li>
-											<li><a href="/properties-full-list">Learn More</a></li>
-											<li><a href="/properties-details">FAQ</a></li>
-											<li class="no-mgb"><a href="/agents-listing-grid">Blog</a></li>
-										</ul>
-										<ul class="nav-right">
-											<li><a href="/agent-details">Testimonials</a></li>
-											<li><a href="/about">Locations</a></li>
-											<li><a href="/blog">Disclaimer</a></li>
-											<li><a href="/blog-details">Press</a></li>
-											<li class="no-mgb"><a href="/contact-us">Support</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="widget">
-									<h3>Social Feeds</h3>
-									<div class="twitter-widget contuct">
-										<div class="twitter-area">
-											<div class="single-item">
-												<div class="icon-holder">
-													<i class="fa fa-twitter" aria-hidden="true"></i>
-												</div>
-												<div class="text">
-													<h5><a href="#">@HousesSoldEasily</a> Lorem Ipsum.</h5>
-													<h4>about 7 days ago</h4>
-												</div>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="widget">
+								<h3>Social Feeds</h3>
+								<div class="twitter-widget contuct">
+									<div class="twitter-area">
+										<div class="single-item">
+											<div class="icon-holder">
+												<i class="fa fa-twitter" aria-hidden="true"></i>
 											</div>
-											<div class="single-item">
-												<div class="icon-holder">
-													<i class="fa fa-facebook" aria-hidden="true"></i>
-												</div>
-												<div class="text">
-													<h5><a href="#">@HousesSoldEasily</a> Lorem Ipsum.</h5>
-													<h4>about 11 days ago</h4>
-												</div>
+											<div class="text">
+												<h5><a href="#">@HousesSoldEasily</a> Lorem Ipsum.</h5>
+												<h4>about 7 days ago</h4>
+											</div>
+										</div>
+										<div class="single-item">
+											<div class="icon-holder">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+											</div>
+											<div class="text">
+												<h5><a href="#">@HousesSoldEasily</a> Lorem Ipsum.</h5>
+												<h4>about 11 days ago</h4>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-3 col-md-6">
-								<div class="contactus">
-									<h3>Contact Us</h3>
-									<ul>
-										<li>
-											<div class="info">
-												<i class="fa fa-phone" aria-hidden="true"></i>
-												<p class="in-p">+1 (786) 496-0562</p>
-											</div>
-										</li>
-										<li>
-											<div class="info">
-												<i class="fa fa-envelope" aria-hidden="true"></i>
-												<p class="in-p ti">support@housessoldeasily.com</p>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<ul class="netsocials">
-									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						</div>
+						<div class="col-lg-3 col-md-6">
+							<div class="contactus">
+								<h3>Contact Us</h3>
+								<ul>
+									<li>
+										<div class="info">
+											<i class="fa fa-phone" aria-hidden="true"></i>
+											<p class="in-p">+1 (786) 496-0562</p>
+										</div>
+									</li>
+									<li>
+										<div class="info">
+											<i class="fa fa-envelope" aria-hidden="true"></i>
+											<p class="in-p ti">support@housessoldeasily.com</p>
+										</div>
+									</li>
 								</ul>
 							</div>
+							<ul class="netsocials">
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-
-			</footer>
-			<!-- END FOOTER -->
-
-			<!-- START PRELOADER -->
-			<div id="preloader">
-				<div id="status">
-					<div class="status-mes"></div>
-				</div>
 			</div>
-			<!-- END PRELOADER -->
 
-		</body>
+		</footer>
+		<!-- END FOOTER -->
 
-		<!-- ARCHIVES JS -->
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/jquery-ui.js"></script>
-		<script src="/js/tether.min.js"></script>
-		<script src="/js/moment.js"></script>
-		<script src="/js/transition.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/fitvids.js"></script>
-		<script src="/js/jquery.waypoints.min.js"></script>
-		<script src="/js/jquery.counterup.min.js"></script>
-		<script src="/js/imagesloaded.pkgd.min.js"></script>
-		<script src="/js/isotope.pkgd.min.js"></script>
-		<script src="/js/smooth-scroll.min.js"></script>
-		<script src="/js/lightcase.js"></script>
-		<script src="/js/owl.carousel.js"></script>
-		<script src="/js/jquery.magnific-popup.min.js"></script>
-		<script src="/js/ajaxchimp.min.js"></script>
-		<script src="/js/newsletter.js"></script>
-		<script src="/js/jquery.form.js"></script>
-		<script src="/js/jquery.validate.min.js"></script>
-		<script src="/js/forms-2.js"></script>
-		<script src="/js/color-switcher.js"></script>
-		<!-- Slider Revolution scripts -->
-		<script src="/revolution/js/jquery.themepunch.tools.min.js"></script>
-		<script src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-		<script src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+		<!-- START PRELOADER -->
+		<div id="preloader">
+			<div id="status">
+				<div class="status-mes"></div>
+			</div>
+		</div>
+		<!-- END PRELOADER -->
 
-		<script>
-		var tpj = jQuery;
-		var revapi34;
-		if (tpj("#rev_slider_home").revolution === undefined) {
-			revslider_showDoubleJqueryError("#rev_slider_home");
-		} else {
-			revapi34 = tpj("#rev_slider_home").show().revolution({
-				sliderType: "standard",
-				jsFileLocation: "js/revolution-slider/js/",
-				sliderLayout: "fullwidth",
-				dottedOverlay: "none",
-				delay: 9000,
-				navigation: {
-					keyboardNavigation: "on",
-					keyboard_direction: "horizontal",
-					mouseScrollNavigation: "off",
-					onHoverStop: "on",
-					touch: {
-						touchenabled: "on",
-						swipe_threshold: 75,
-						swipe_min_touches: 1,
-						swipe_direction: "horizontal",
-						drag_block_vertical: false
+	</body>
+
+	<!-- ARCHIVES JS -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/tether.min.js"></script>
+	<script src="/js/moment.js"></script>
+	<script src="/js/transition.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/fitvids.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/imagesloaded.pkgd.min.js"></script>
+	<script src="/js/isotope.pkgd.min.js"></script>
+	<script src="/js/smooth-scroll.min.js"></script>
+	<script src="/js/lightcase.js"></script>
+	<script src="/js/owl.carousel.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/ajaxchimp.min.js"></script>
+	<script src="/js/newsletter.js"></script>
+	<script src="/js/jquery.form.js"></script>
+	<script src="/js/jquery.validate.min.js"></script>
+	<script src="/js/forms-2.js"></script>
+	<script src="/js/color-switcher.js"></script>
+	<!-- Slider Revolution scripts -->
+	<script src="/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script src="/revolution/js/jquery.themepunch.revolution.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+	<script src="/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+	<script>
+	var tpj = jQuery;
+	var revapi34;
+	if (tpj("#rev_slider_home").revolution === undefined) {
+		revslider_showDoubleJqueryError("#rev_slider_home");
+	} else {
+		revapi34 = tpj("#rev_slider_home").show().revolution({
+			sliderType: "standard",
+			jsFileLocation: "js/revolution-slider/js/",
+			sliderLayout: "fullwidth",
+			dottedOverlay: "none",
+			delay: 9000,
+			navigation: {
+				keyboardNavigation: "on",
+				keyboard_direction: "horizontal",
+				mouseScrollNavigation: "off",
+				onHoverStop: "on",
+				touch: {
+					touchenabled: "on",
+					swipe_threshold: 75,
+					swipe_min_touches: 1,
+					swipe_direction: "horizontal",
+					drag_block_vertical: false
+				},
+				arrows: {
+					style: "zeus",
+					enable: true,
+					hide_onmobile: true,
+					hide_under: 600,
+					hide_onleave: true,
+					hide_delay: 200,
+					hide_delay_mobile: 1200,
+					tmp: '<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+					left: {
+						h_align: "left",
+						v_align: "center",
+						h_offset: 30,
+						v_offset: 0
 					},
-					arrows: {
-						style: "zeus",
-						enable: true,
-						hide_onmobile: true,
-						hide_under: 600,
-						hide_onleave: true,
-						hide_delay: 200,
-						hide_delay_mobile: 1200,
-						tmp: '<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
-						left: {
-							h_align: "left",
-							v_align: "center",
-							h_offset: 30,
-							v_offset: 0
-						},
-						right: {
-							h_align: "right",
-							v_align: "center",
-							h_offset: 30,
-							v_offset: 0
-						}
-					},
-					bullets: {
-						enable: false,
-						hide_onmobile: true,
-						hide_under: 600,
-						style: "metis",
-						hide_onleave: true,
-						hide_delay: 200,
-						hide_delay_mobile: 1200,
-						direction: "horizontal",
-						h_align: "center",
-						v_align: "bottom",
-						h_offset: 0,
-						v_offset: 30,
-						space: 5,
-						tmp: '<span class="tp-bullet-img-wrap"><span class="tp-bullet-image"></span></span>'
+					right: {
+						h_align: "right",
+						v_align: "center",
+						h_offset: 30,
+						v_offset: 0
 					}
 				},
-				viewPort: {
-					enable: true,
-					outof: "pause",
-					visible_area: "80%"
-				},
-				responsiveLevels: [1240, 1024, 778, 480],
-				gridwidth: [1240, 1024, 778, 480],
-				gridheight: [600, 550, 500, 450],
-				lazyType: "none",
-				parallax: {
-					type: "scroll",
-					origo: "enterpoint",
-					speed: 400,
-					levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-				},
-				shadow: 0,
-				spinner: "off",
-				stopLoop: "off",
-				stopAfterLoops: -1,
-				stopAtSlide: -1,
-				shuffle: "off",
-				autoHeight: "off",
-				hideThumbsOnMobile: "off",
-				hideSliderAtLimit: 0,
-				hideCaptionAtLimit: 0,
-				hideAllCaptionAtLilmit: 0,
-				debugMode: false,
-				fallbacks: {
-					simplifyAll: "off",
-					nextSlideOnWindowFocus: "off",
-					disableFocusListener: false,
+				bullets: {
+					enable: false,
+					hide_onmobile: true,
+					hide_under: 600,
+					style: "metis",
+					hide_onleave: true,
+					hide_delay: 200,
+					hide_delay_mobile: 1200,
+					direction: "horizontal",
+					h_align: "center",
+					v_align: "bottom",
+					h_offset: 0,
+					v_offset: 30,
+					space: 5,
+					tmp: '<span class="tp-bullet-img-wrap"><span class="tp-bullet-image"></span></span>'
 				}
-			});
-		}
-		</script>
+			},
+			viewPort: {
+				enable: true,
+				outof: "pause",
+				visible_area: "80%"
+			},
+			responsiveLevels: [1240, 1024, 778, 480],
+			gridwidth: [1240, 1024, 778, 480],
+			gridheight: [600, 550, 500, 450],
+			lazyType: "none",
+			parallax: {
+				type: "scroll",
+				origo: "enterpoint",
+				speed: 400,
+				levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
+			},
+			shadow: 0,
+			spinner: "off",
+			stopLoop: "off",
+			stopAfterLoops: -1,
+			stopAtSlide: -1,
+			shuffle: "off",
+			autoHeight: "off",
+			hideThumbsOnMobile: "off",
+			hideSliderAtLimit: 0,
+			hideCaptionAtLimit: 0,
+			hideAllCaptionAtLilmit: 0,
+			debugMode: false,
+			fallbacks: {
+				simplifyAll: "off",
+				nextSlideOnWindowFocus: "off",
+				disableFocusListener: false,
+			}
+		});
+	}
+	</script>
 
-		<!-- MAIN JS -->
-		<script src="/js/script.js"></script>
+	<!-- MAIN JS -->
+	<script src="/js/script.js"></script>
 
-		<!--Start of Tawk.to Script-->
-		<script type="text/javascript">
-		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-		(function(){
-			var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-			s1.async=true;
-			s1.src='https://embed.tawk.to/5c0c8af367f72462651fb015/default';
-			s1.charset='UTF-8';
-			s1.setAttribute('crossorigin','*');
-			s0.parentNode.insertBefore(s1,s0);
-		})();
-		</script>
-		<!--End of Tawk.to Script-->
-		</html>
+	<!--Start of Tawk.to Script-->
+	<script type="text/javascript">
+	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+	(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/5c0c8af367f72462651fb015/default';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+	})();
+	</script>
+	<!--End of Tawk.to Script-->
+	</html>
 
-		<style>
-		.stats-top-text {
-			float: left;
-			margin-bottom: 12px;
-		}
-		.stat-icon {
-			margin-top: 20px;
-		}
-		.counter {
-			margin-top: 5px;
-		}
-		</style>
+	<style>
+	.stats-top-text {
+		float: left;
+		margin-bottom: 12px;
+	}
+	.stat-icon {
+		margin-top: 20px;
+	}
+	.counter {
+		margin-top: 5px;
+	}
+	</style>
