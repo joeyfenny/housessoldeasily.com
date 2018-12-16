@@ -2,33 +2,31 @@
 
 <header class="jumbotron">
   <div class="container">
-    <h1>Welcome To My Website!</h1>
-    <p>View our database posts below.</p>
-    <p><a class="btn btn-primary btn-lg" href="/campgrounds/new">Add A New Post</a></p>
-    <p>
-      <form action="/campgrounds" method="GET" class="form-inline" id="campground-search">
-        <div class="form-group">
-          <input type="text" name="search" placeholder="Search for campgrounds" class="form-control">
-        </div>
-      </form>
-    </p>
+    <h1>Welcome To HousesSoldEasily!</h1>
+    <p>View our leads below.</p>
+    <p><a class="btn btn-primary btn-lg" href="/leads/new">Create A New Lead</a></p>
+    <form action="/leads" method="GET" class="form-inline" id="campground-search">
+      <div class="form-group">
+        <input type="text" name="search" placeholder="Search for leads" class="form-control">
+      </div>
+    </form>
   </div>
 </header>
 
-<div class="row text-center flex-wrap" id="campground-grid">
-  <% campgrounds.forEach(function(campground){ %>
-    <div class="col-md-3 col-sm-6">
+<div class="row text-center flex-wrap" id="lead-grid">
+ <% leads.forEach(function(lead){ %>
+   <div class="col-md-3 col-sm-6">
       <div class="thumbnail">
-        <img src="<%= campground.image %>">
+        <img src="<%= lead.image %>">
         <div class="caption">
-          <h4><%= campground.name %></h4>
+          <h4><%= lead.firstName %></h4>
         </div>
         <p>
-          <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+          <a href="/leads/<%= lead._id %>" class="btn btn-primary">More Info</a>
         </p>
       </div>
     </div>
-    <% }); %>
-  </div>
+  <% }); %>
+</div>
 
-  <% include ../partials/footer %>
+<% include ../partials/footer %>

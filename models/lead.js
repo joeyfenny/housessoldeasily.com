@@ -3,11 +3,12 @@ var mongoose = require("mongoose");
 var leadSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  phoneNumber: String,
   email: String,
+  phoneNumber: String,
   streetAddress: String,
+  city: String,
   state: String,
-  zipCode: Number,
+  zipCode: String,
   createdDate: { type: Date, default: Date.now }
 });
 

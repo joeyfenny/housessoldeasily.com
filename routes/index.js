@@ -26,7 +26,7 @@ router.post("/signup", function(req, res) {
     }
     passport.authenticate("local")(req, res, function() {
       req.flash("success", "Successfully signed Up! Nice to meet you " + req.body.username);
-      res.redirect("/campgrounds");
+      res.redirect("/leads");
     });
   });
 });
@@ -38,17 +38,17 @@ router.get("/login", function(req, res) {
 
 //handling login logic
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/campgrounds",
+  successRedirect: "/leads",
   failureRedirect: "/login",
   failureFlash: true,
-  successFlash: 'Welcome to YelpCamp!'
+  successFlash: 'Welcome to HousesSoldEasily!'
 }), function(req, res) {});
 
 // logout route
 router.get("/logout", function(req, res) {
   req.logout();
   req.flash("success", "Successfully logged out.");
-  res.redirect("/campgrounds");
+  res.redirect("/");
 });
 
 module.exports = router;
