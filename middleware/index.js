@@ -1,5 +1,6 @@
 var Comment = require('../models/comment');
 var Campground = require('../models/campground');
+var Lead = require('../models/lead');
 
 module.exports = {
 
@@ -51,7 +52,7 @@ module.exports = {
       res.redirect('back');
     }
   },
-  
+
   isSafe: function(req, res, next) {
     if (req.body.image.match(/^https:\/\/images\.unsplash\.com\/.*/)) {
       next();

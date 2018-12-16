@@ -5,24 +5,24 @@ var User = require("../models/user");
 
 //root route
 router.get("/", function(req, res) {
-  res.render("landing");
+  res.render("index");
 });
 
-// show register form
-router.get("/register", function(req, res) {
-  res.render("register", {page: 'register'});
+// show signup form
+router.get("/signup", function(req, res) {
+  res.render("signup", {page: 'signup'});
 });
 
 //handle sign up logic
-router.post("/register", function(req, res) {
+router.post("/signup", function(req, res) {
   var newUser = new User({username: req.body.username});
   if (req.body.adminCode === process.env.ADMIN_CODE) {
     newUser.isAdmin = true;
   }
-  User.register(newUser, req.body.password, function(err, user) {
+  User.signup(newUser, req.body.password, function(err, user) {
     if (err) {
       console.log(err);
-      return res.render("register", {error: err.message});
+      return res.render("signup", {error: err.message});
     }
     passport.authenticate("local")(req, res, function() {
       req.flash("success", "Successfully signed Up! Nice to meet you " + req.body.username);
