@@ -3,19 +3,14 @@
 <header class="jumbotron">
   <div class="container">
     <h1>Welcome To HousesSoldEasily!</h1>
-    <p>View our leads below.</p>
     <p><a class="btn btn-primary btn-lg" href="/leads/new">Create A New Lead</a></p>
-    <form action="/leads" method="GET" class="form-inline" id="lead-search">
-      <div class="form-group">
-        <input type="text" name="search" placeholder="Search for leads" class="form-control">
-      </div>
-    </form>
+    <form action="/leads" method="GET" class="form-inline" id="lead-search"></form>
   </div>
 </header>
 
 <div class="row text-center flex-wrap" id="lead-grid">
- <% leads.forEach(function(lead){ %>
-   <div class="col-md-3 col-sm-6">
+  <% leads.forEach(function(lead){ %>
+    <div class="col-md-3 col-sm-6">
       <div class="thumbnail">
         <div class="caption">
           <h4><%= lead.firstName %> <%= lead.lastName %></h4>
@@ -23,7 +18,7 @@
         <p><a href="/leads/<%= lead._id %>" class="btn btn-primary">More Info</a></p>
       </div>
     </div>
-  <% }); %>
-</div>
+    <% }); %>
+  </div>
 
-<% include ../partials/footer %>
+  <% include ../partials/footer %>
