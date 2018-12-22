@@ -452,8 +452,8 @@ img {
 }
 
 .heading .logo img {
-    width: 75px;
-    height: 35px;
+    width: 100px;
+    height: 40px;
 }
 
 @media screen and (max-width: 414px) {
@@ -4149,6 +4149,11 @@ input {
     padding: 5rem 0;
     background: #0098ef;
     background-repeat: repeat;
+}
+@media (max-width: 500px) {
+	.main-search-field {
+		margin-top: 18em;
+	}
 }
 
 .main-search-field.mt10 {
