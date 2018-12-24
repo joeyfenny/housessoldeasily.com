@@ -61,6 +61,9 @@ app.use(function(req, res, next){
 
 app.use("/", indexRoutes);
 app.use("/leads", leadRoutes);
+app.use(function(req, res, next){
+    res.status(404).render('404');
+});
 
 app.set('port', process.env.PORT || 3000);
 app.listen(process.env.PORT, process.env.IP, function(){
