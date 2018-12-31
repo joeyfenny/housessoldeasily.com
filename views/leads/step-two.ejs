@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+<div class="row">
+  <h1 style="text-align: center">Final Step!</h1>
+  <div style="width: 30%; margin: 25px auto;">
+    <form action="/leads/new" method="POST">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" placeholder="email" step="0.01" required>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+      </div>
+      <div class="form-group">
+        <label for="streetAddress">Street Address</label>
+        <input class="form-control" type="text" name="streetAddress" id="streetAddress" placeholder="Street Address">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input class="form-control" type="text" name="city" id="city" placeholder="City">
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input class="form-control" type="text" name="state" id="state" placeholder="State">
+      </div>
+      <div class="form-group">
+        <label for="zipCode">Zip Code</label>
+        <input class="form-control" type="text" name="zipCode" id="zipCode" placeholder="Zip Code">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<% include ../partials/footer %>
