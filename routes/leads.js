@@ -38,9 +38,9 @@ router.get("/", function(req, res) {
         if (req.xhr) {
           res.json(allLeads);
         } else {
-          res.render("leads/index", {
+          res.render("leads/thank-you", {
             leads: allLeads,
-            page: 'leads'
+            page: 'thank-you'
           });
         }
       }
