@@ -80,7 +80,7 @@ router.post("/new", isSafe, function(req, res) {
 });
 
 router.post("/address-submitted", function(req, res) {
-  res.render("leads/step-two");
+
 });
 
 //NEW - route to render form to create a new lead, route=/leads/new
