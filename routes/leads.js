@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Lead = require("../models/lead");
 var middleware = require("../middleware");
+var request = require("request");
 var {
   isLoggedIn,
   checkUserLead,
@@ -79,8 +80,23 @@ router.post("/new", isSafe, function(req, res) {
   });
 });
 
-router.post("/address-submitted", function(req, res) {
+router.post("/final-step", function(req2, res2) {
+  var json = null
+  const options = {
+    url: 'https://www.reddit.com/r/funny.json',
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Accept-Charset': 'utf-8',
+      'User-Agent': 'my-reddit-client'
+    }
+  };
 
+  request(options, function(err, req2, body) {
+    json = JSON.parse(body);
+    console.log(json);
+  });
+  res2.render("leads/final-step", {address: json});
 });
 
 //NEW - route to render form to create a new lead, route=/leads/new
