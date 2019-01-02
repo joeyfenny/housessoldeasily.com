@@ -95,7 +95,8 @@ router.post("/final-step", function(req, res) {
   })
   .then(function (response) {
     console.log(response);
-    res.render("leads/final-step", {data: response});
+    var test = response.data;
+    res.render("leads/final-step", {data: test});
   })
   .catch(function (error) {
     console.log(error);
