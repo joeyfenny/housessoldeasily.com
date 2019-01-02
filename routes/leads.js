@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Lead = require("../models/lead");
 var middleware = require("../middleware");
-var httpRequest = require("request");
+var axios = require("axios");
 var {
   isLoggedIn,
   checkUserLead,
@@ -82,13 +82,25 @@ router.post("/new", isSafe, function(req, res) {
 
 router.post("/final-step", function(req, res) {
 
-  httpRequest('http://www.google.com', function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
+  var zillowEndpoint = 'http://www.zillow.com/webservice/GetDeepSearchResults.htm';
+  var address = req.body.address.split(/,(.+)/)[0];
+  var citystatezip = req.body.address.split(/,(.+)/)[1];
+
+  axios.get(zillowEndpoint, {
+    params: {
+      'zws-id': process.env.ZWSID,
+      'address': address,
+      'citystatezip': citystatezip
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+    res.render("leads/final-step", {data: response});
+  })
+  .catch(function (error) {
+    console.log(error);
   });
 
-  res.render("leads/final-step", {data: req.body});
 });
 
 //NEW - route to render form to create a new lead, route=/leads/new
