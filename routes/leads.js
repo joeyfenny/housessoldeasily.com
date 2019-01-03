@@ -2,16 +2,8 @@ var express = require("express");
 var router = express.Router();
 var Lead = require("../models/lead");
 var middleware = require("../middleware");
-var axios = require("axios");
 var request = require("request");
-var parseString = require('xml2js').parseString;
-var {
-  isLoggedIn,
-  checkUserLead,
-  checkUserComment,
-  isAdmin,
-  isSafe
-} = middleware; // destructuring assignment
+var { isLoggedIn, checkUserLead, checkUserComment, isAdmin, isSafe } = middleware; // destructuring assignment
 
 // Define escapeRegex function for search feature
 function escapeRegex(text) {
@@ -51,9 +43,7 @@ router.get("/", function(req, res) {
   }
 });
 
-//CREATE - add new lead to DB, route=/leads/
 router.post("/new", isSafe, function(req, res) {
-  // get data from form and add to leads array
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
   var email = req.body.email;
@@ -72,7 +62,6 @@ router.post("/new", isSafe, function(req, res) {
     state: state,
     zipCode: zipCode
   };
-  // Create a new lead and save to DB
   Lead.create(newLead, function(err, newlyCreated) {
     if (err) {
       console.log(err);
@@ -83,10 +72,8 @@ router.post("/new", isSafe, function(req, res) {
 });
 
 router.post("/final-step", function(req, res) {
-
   var address = req.body.address.split(/,(.+)/)[0];
   var citystatezip = req.body.address.split(/,(.+)/)[1];
-
   var options = {
     method: 'GET',
     url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
@@ -96,9 +83,9 @@ router.post("/final-step", function(req, res) {
 
   request(options, function (error, response, body) {
     if (error) console.log(error);
+
     var data = JSON.parse(body).property[0];
     var avm = data.avm;
-
     var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
     var avmpoorhigh = JSON.stringify(avm.condition.avmpoorhigh);
     var avmgoodlow = JSON.stringify(avm.condition.avmgoodlow);
@@ -116,17 +103,13 @@ router.post("/final-step", function(req, res) {
     });
   });
 
-
 });
 
-//NEW - route to render form to create a new lead, route=/leads/new
 router.get("/new", isLoggedIn, function(req, res) {
   res.render("leads/new");
 });
 
-// SHOW - shows info about one lead by id, route=/leads/:id
 router.get("/:id", function(req, res) {
-  //find the lead with provided ID
   Lead.findById(req.params.id).populate("comments").exec(function(err, foundLead) {
     if (err || !foundLead) {
       console.log(err);
@@ -134,18 +117,14 @@ router.get("/:id", function(req, res) {
       return res.redirect('/leads');
     }
     console.log(foundLead);
-    //render show template with that lead
     res.render("leads/show", {lead: foundLead});
   });
 });
 
-// EDIT - shows edit form for a lead by id, route=/leads/:id/edit
 router.get("/:id/edit", isLoggedIn, checkUserLead, function(req, res) {
-  //render edit template with that lead
   res.render("leads/edit", {lead: req.lead});
 });
 
-// PUT - updates lead in the database by id, route=/leads/:id
 router.put("/:id", isSafe, function(req, res) {
   var newData = {
     name: req.body.name,

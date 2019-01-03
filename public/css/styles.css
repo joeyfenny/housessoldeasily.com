@@ -1,4 +1,9 @@
 /* custom */
+@media (max-width: 500px) {
+	.countr {
+		margin: 35px;
+	}
+}
 #text-404 {
 	text-align: center;
 	margin-top: 2em;
@@ -3569,7 +3574,7 @@ section.counterup {
 
 @media screen and (max-width: 991px) {
     .counterup .countr h3 {
-        margin-bottom: 5rem;
+        /* margin-bottom: 2rem; */
     }
 
     .counterup .countr.mb-0 h3 {
@@ -3593,11 +3598,11 @@ section.counterup {
 
 @media screen and (max-width: 767px) {
     .counterup .countr.mb-0 h3 {
-        margin-bottom: 5rem;
+        /* margin-bottom: 2rem; */
     }
 
     .counterup .countr.mb-0.last {
-        margin-right: 1rem;
+        /* margin-right: 1rem; */
     }
 
     .counterup .countr.mb-0.last h3 {
@@ -3605,7 +3610,7 @@ section.counterup {
     }
 
     .counterup .countr .fa {
-        margin-top: 0px;
+        margin-top: 20px;
     }
 }
 
@@ -8839,6 +8844,7 @@ input.border, select.border, textarea.border, .form-block.border .chosen-contain
 
     .counterup .countr p {
         font-size: 2rem;
+        /* float: left; */
     }
 
     .testimonials .test-1 p {

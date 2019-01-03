@@ -25,7 +25,7 @@ const databaseUri = process.env.MONGODB_URI;
 
 mongoose.connect(databaseUri, { useMongoClient: true })
 .then(() => console.log(`The MongoDB database was connected successfully.`))
-.catch(err => console.log(`MongoDB connection error: ${err.message}` + 'Make sure MongoDB installed and running and that you have the proper connection URI.'));
+.catch(err => console.log(`MongoDB connection error: ${err.message}`));
 
 app.use(bodyParser.urlencoded({extended: true}));
 
