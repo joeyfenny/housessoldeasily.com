@@ -5,10 +5,6 @@ var leadSchema = new mongoose.Schema({
   lastName: String,
   email: String,
   phoneNumber: String,
-  streetAddress: String,
-  city: String,
-  state: String,
-  zipCode: String,
   createdDate: { type: Date, default: Date.now }
 });
 

@@ -48,20 +48,32 @@ router.post("/new", isSafe, function(req, res) {
   var lastName = req.body.lastName;
   var email = req.body.email;
   var phoneNumber = req.body.phoneNumber;
-  var streetAddress = req.body.streetAddress;
-  var city = req.body.city;
-  var state = req.body.state;
-  var zipCode = req.body.zipCode;
   var newLead = {
     firstName: firstName,
     lastName: lastName,
     email: email,
     phoneNumber: phoneNumber,
-    streetAddress: streetAddress,
-    city: city,
-    state: state,
-    zipCode: zipCode
   };
+  var sendgridOptions = {
+    json: true,
+    method: 'POST',
+    url: 'https://api.sendgrid.com/v3/contactdb/recipients',
+    headers: {
+      Authorization: 'Bearer ' + process.env.SENDGRID
+    },
+    body: [
+      {
+        "email": email.toString(),
+        "first_name": firstName.toString(),
+        "last_name": lastName.toString(),
+        "phoneNumber": phoneNumber.toString(),
+        "websiteOriginatedFrom": "housessoldeasily.com"
+      }
+    ]
+  };
+  request(sendgridOptions, function (error, response, body) {
+    console.log(body);
+  });
   Lead.create(newLead, function(err, newlyCreated) {
     if (err) {
       console.log(err);
@@ -74,16 +86,20 @@ router.post("/new", isSafe, function(req, res) {
 router.post("/final-step", function(req, res) {
   var address = req.body.address.split(/,(.+)/)[0];
   var citystatezip = req.body.address.split(/,(.+)/)[1];
-  var options = {
+  var attomOptions = {
     method: 'GET',
     url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
-    qs: { address1: address, address2: citystatezip },
-    headers: { accept: 'application/json', apikey: process.env.ATTOM }
+    qs: {
+      address1: address,
+      address2: citystatezip
+    },
+    headers: {
+      accept: 'application/json',
+      apikey: process.env.ATTOM
+    }
   };
-
-  request(options, function (error, response, body) {
+  request(attomOptions, function (error, response, body) {
     if (error) console.log(error);
-
     var data = JSON.parse(body).property[0];
     var avm = data.avm;
     var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
@@ -92,7 +108,6 @@ router.post("/final-step", function(req, res) {
     var avmgoodhigh = JSON.stringify(avm.condition.avmgoodhigh);
     var avmexcellentlow = JSON.stringify(avm.condition.avmexcellentlow);
     var avmexcellenthigh = JSON.stringify(avm.condition.avmexcellenthigh);
-
     res.render("leads/final-step", {
       avmpoorlow: avmpoorlow,
       avmpoorhigh: avmpoorhigh,
@@ -102,7 +117,6 @@ router.post("/final-step", function(req, res) {
       avmexcellenthigh: avmexcellenthigh,
     });
   });
-
 });
 
 router.get("/new", isLoggedIn, function(req, res) {
