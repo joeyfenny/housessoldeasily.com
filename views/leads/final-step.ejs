@@ -2,7 +2,12 @@
 
 <form id="final-step" action="/leads/new" method="POST">
   <h1>Final Step!</h1>
-  <h4><%= data %></h4>
+  <p>Poor Condition, Low Valuation: <%- avmpoorlow %></p>
+  <p>Poor Condition, High Valuation: <%- avmpoorhigh %></p>
+  <p>Good Condition, Low Valuation: <%- avmgoodlow %></p>
+  <p>Good Condition, High Valuation: <%- avmgoodhigh %></p>
+  <p>Excellent Condition, Low Valuation: <%- avmexcellentlow %></p>
+  <p>Excellent Condition, High Valuation: <%- avmexcellenthigh %></p>
   <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
   <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
   <input class="form-control" type="text" name="email" id="email" placeholder="E-Mail" step="0.01" required>

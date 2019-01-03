@@ -3,6 +3,8 @@ var router = express.Router();
 var Lead = require("../models/lead");
 var middleware = require("../middleware");
 var axios = require("axios");
+var request = require("request");
+var parseString = require('xml2js').parseString;
 var {
   isLoggedIn,
   checkUserLead,
@@ -82,25 +84,38 @@ router.post("/new", isSafe, function(req, res) {
 
 router.post("/final-step", function(req, res) {
 
-  var zillowEndpoint = 'http://www.zillow.com/webservice/GetDeepSearchResults.htm';
   var address = req.body.address.split(/,(.+)/)[0];
   var citystatezip = req.body.address.split(/,(.+)/)[1];
 
-  axios.get(zillowEndpoint, {
-    params: {
-      'zws-id': process.env.ZWSID,
-      'address': address,
-      'citystatezip': citystatezip
-    }
-  })
-  .then(function (response) {
-    // console.log(response);
-    var test = response.data;
-    res.render("leads/final-step", {data: test});
-  })
-  .catch(function (error) {
-    console.log(error);
+  var options = {
+    method: 'GET',
+    url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
+    qs: { address1: address, address2: citystatezip },
+    headers: { accept: 'application/json', apikey: process.env.ATTOM }
+  };
+
+  request(options, function (error, response, body) {
+    if (error) console.log(error);
+    var data = JSON.parse(body).property[0];
+    var avm = data.avm;
+
+    var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
+    var avmpoorhigh = JSON.stringify(avm.condition.avmpoorhigh);
+    var avmgoodlow = JSON.stringify(avm.condition.avmgoodlow);
+    var avmgoodhigh = JSON.stringify(avm.condition.avmgoodhigh);
+    var avmexcellentlow = JSON.stringify(avm.condition.avmexcellentlow);
+    var avmexcellenthigh = JSON.stringify(avm.condition.avmexcellenthigh);
+
+    res.render("leads/final-step", {
+      avmpoorlow: avmpoorlow,
+      avmpoorhigh: avmpoorhigh,
+      avmgoodlow: avmgoodlow,
+      avmgoodhigh: avmgoodhigh,
+      avmexcellentlow: avmexcellentlow,
+      avmexcellenthigh: avmexcellenthigh,
+    });
   });
+
 
 });
 
