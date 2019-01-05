@@ -43,6 +43,29 @@ router.get("/", function(req, res) {
   }
 });
 
+router.post("/newsletter-signup", function(req, res) {
+  var email = req.body.email;
+
+  var sendgridCreateContact = {
+    json: true,
+    method: 'POST',
+    url: 'https://api.sendgrid.com/v3/contactdb/recipients',
+    headers: {
+      Authorization: 'Bearer ' + process.env.SENDGRID
+    },
+    body: [
+      {
+        "email": email.toString(),
+        "websiteOriginatedFrom": "housessoldeasily.com"
+      }
+    ]
+  };
+  request(sendgridCreateContact, function (error, response, body) {
+    if(error)console.log(error);
+  });
+});
+
+
 router.post("/new", isSafe, function(req, res) {
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
@@ -54,7 +77,8 @@ router.post("/new", isSafe, function(req, res) {
     email: email,
     phoneNumber: phoneNumber,
   };
-  var sendgridOptions = {
+
+  var sendgridCreateContact = {
     json: true,
     method: 'POST',
     url: 'https://api.sendgrid.com/v3/contactdb/recipients',
@@ -71,92 +95,119 @@ router.post("/new", isSafe, function(req, res) {
       }
     ]
   };
-  request(sendgridOptions, function (error, response, body) {
+  request(sendgridCreateContact, function (error, response, body) {
     console.log(body);
   });
-  Lead.create(newLead, function(err, newlyCreated) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect('/leads');
-    }
-  });
-});
 
-router.post("/final-step", function(req, res) {
-  var address = req.body.address.split(/,(.+)/)[0];
-  var citystatezip = req.body.address.split(/,(.+)/)[1];
-  var attomOptions = {
-    method: 'GET',
-    url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
-    qs: {
-      address1: address,
-      address2: citystatezip
-    },
+  var options = { method: 'POST',
+    url: 'https://api.sendgrid.com/v3/mail/send',
     headers: {
-      accept: 'application/json',
-      apikey: process.env.ATTOM
-    }
-  };
-  request(attomOptions, function (error, response, body) {
-    if (error) console.log(error);
-    var data = JSON.parse(body).property[0];
-    var avm = data.avm;
-    var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
-    var avmpoorhigh = JSON.stringify(avm.condition.avmpoorhigh);
-    var avmgoodlow = JSON.stringify(avm.condition.avmgoodlow);
-    var avmgoodhigh = JSON.stringify(avm.condition.avmgoodhigh);
-    var avmexcellentlow = JSON.stringify(avm.condition.avmexcellentlow);
-    var avmexcellenthigh = JSON.stringify(avm.condition.avmexcellenthigh);
-    res.render("leads/final-step", {
-      avmpoorlow: avmpoorlow,
-      avmpoorhigh: avmpoorhigh,
-      avmgoodlow: avmgoodlow,
-      avmgoodhigh: avmgoodhigh,
-      avmexcellentlow: avmexcellentlow,
-      avmexcellenthigh: avmexcellenthigh,
+      Authorization: 'Bearer ' + process.env.SENDGRID,
+      'Content-Type': 'application/json'
+    },
+    body:
+     { personalizations:
+        [ { to: [ { email: email } ],
+            subject: 'We are reviewing your property.' } ],
+       from: { email: 'support@housessoldeasily.com' },
+       content:
+        [ { type: 'text/plain',
+            value: 'We have received your request for an offer on your property. We are currently evaluating the property and we will get back to you soon. Most people receive a response within 24 hours.' } ] },
+    json: true };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    console.log(body);
+  });
+
+    Lead.create(newLead, function(err, newlyCreated) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect('/leads');
+      }
     });
   });
-});
 
-router.get("/new", isLoggedIn, function(req, res) {
-  res.render("leads/new");
-});
-
-router.get("/:id", function(req, res) {
-  Lead.findById(req.params.id).populate("comments").exec(function(err, foundLead) {
-    if (err || !foundLead) {
-      console.log(err);
-      req.flash('error', 'Sorry, that lead does not exist!');
-      return res.redirect('/leads');
-    }
-    console.log(foundLead);
-    res.render("leads/show", {lead: foundLead});
+  router.post("/final-step", function(req, res) {
+    var address = req.body.address.split(/,(.+)/)[0];
+    var citystatezip = req.body.address.split(/,(.+)/)[1];
+    var attomOptions = {
+      method: 'GET',
+      url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
+      qs: {
+        address1: address,
+        address2: citystatezip
+      },
+      headers: {
+        accept: 'application/json',
+        apikey: process.env.ATTOM
+      }
+    };
+    request(attomOptions, function (error, response, body) {
+      if (error) console.log(error);
+      var data = JSON.parse(body).property[0];
+      var avm = data.avm;
+      var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
+      var avmpoorhigh = JSON.stringify(avm.condition.avmpoorhigh);
+      var avmgoodlow = JSON.stringify(avm.condition.avmgoodlow);
+      var avmgoodhigh = JSON.stringify(avm.condition.avmgoodhigh);
+      var avmexcellentlow = JSON.stringify(avm.condition.avmexcellentlow);
+      var avmexcellenthigh = JSON.stringify(avm.condition.avmexcellenthigh);
+      var lat = data.location.latitude;
+      var lng = data.location.longitude;
+      res.render("leads/final-step", {
+        avmpoorlow: avmpoorlow,
+        avmpoorhigh: avmpoorhigh,
+        avmgoodlow: avmgoodlow,
+        avmgoodhigh: avmgoodhigh,
+        avmexcellentlow: avmexcellentlow,
+        avmexcellenthigh: avmexcellenthigh,
+        lat: lat,
+        lng: lng,
+      });
+    });
   });
-});
 
-router.get("/:id/edit", isLoggedIn, checkUserLead, function(req, res) {
-  res.render("leads/edit", {lead: req.lead});
-});
-
-router.put("/:id", isSafe, function(req, res) {
-  var newData = {
-    name: req.body.name,
-    image: req.body.image,
-    description: req.body.description,
-    cost: req.body.cost
-  };
-  Lead.findByIdAndUpdate(req.params.id, {
-    $set: newData
-  }, function(err, lead) {
-    if (err) {
-      req.flash("error", err.message);
-      res.redirect("back");
-    } else {
-      req.flash("success", "Successfully Updated!");
-      res.redirect("/leads/" + lead._id);
-    }
+  router.get("/new", isLoggedIn, function(req, res) {
+    res.render("leads/new");
   });
-});
 
-module.exports = router;
+  router.get("/:id", function(req, res) {
+    Lead.findById(req.params.id).populate("comments").exec(function(err, foundLead) {
+      if (err || !foundLead) {
+        console.log(err);
+        req.flash('error', 'Sorry, that lead does not exist!');
+        return res.redirect('/leads');
+      }
+      console.log(foundLead);
+      res.render("leads/show", {lead: foundLead});
+    });
+  });
+
+  router.get("/:id/edit", isLoggedIn, checkUserLead, function(req, res) {
+    res.render("leads/edit", {lead: req.lead});
+  });
+
+  router.put("/:id", isSafe, function(req, res) {
+    var newData = {
+      name: req.body.name,
+      image: req.body.image,
+      description: req.body.description,
+      cost: req.body.cost
+    };
+    Lead.findByIdAndUpdate(req.params.id, {
+      $set: newData
+    }, function(err, lead) {
+      if (err) {
+        req.flash("error", err.message);
+        res.redirect("back");
+      } else {
+        req.flash("success", "Successfully Updated!");
+        res.redirect("/leads/" + lead._id);
+      }
+    });
+  });
+
+  module.exports = router;

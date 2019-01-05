@@ -35,39 +35,39 @@
           <a class="btn btn-success" href="/leads/<%= lead._id %>/comments/new">Add New Comment</a>
         </div>
         <hr>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
 
-      <script>
-        function initMap() {
-          var lat = <%= lead.lat %>;
-          var lng = <%= lead.lng %>;
-          var center = {lat: lat, lng: lng };
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8,
-            center: center,
-            scrollwheel: true,
-            mapTypeId: google.maps.MapTypeId.HYBRID
-          });
-          var contentString = `
-          <strong><%= lead.firstName %><br />
-            <%= lead.lastName %></strong>
-            <p><%= lead.email %></p>
-            `
-            var infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
-            var marker = new google.maps.Marker({
-              position: center,
-              map: map
-            });
-            marker.addListener('click', function() {
-              infowindow.open(map, marker);
-            });
-          }
-        </script>
+  <script>
+    function initMap() {
+      var lat = <%= lead.lat %>;
+      var lng = <%= lead.lng %>;
+      var center = {lat: lat, lng: lng };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: true,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      });
+      var contentString = `
+      <strong><%= lead.firstName %><br />
+        <%= lead.lastName %></strong>
+        <p><%= lead.email %></p>
+        `
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        var marker = new google.maps.Marker({
+          position: center,
+          map: map
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+    </script>
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvIOYOAw4iI_j7PC-Gujb7YC1IOQoqYtw&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvIOYOAw4iI_j7PC-Gujb7YC1IOQoqYtw&callback=initMap"></script>
 
-        <% include ../partials/footer %>
+    <% include ../partials/footer %>

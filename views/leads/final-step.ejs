@@ -1,29 +1,107 @@
 <% include ../partials/header %>
-
-<form id="final-step" action="/leads/new" method="POST">
-  <h1>Final Step!</h1>
-  <p>Poor Condition, Low Valuation: <%- avmpoorlow %></p>
-  <p>Poor Condition, High Valuation: <%- avmpoorhigh %></p>
-  <p>Good Condition, Low Valuation: <%- avmgoodlow %></p>
-  <p>Good Condition, High Valuation: <%- avmgoodhigh %></p>
-  <p>Excellent Condition, Low Valuation: <%- avmexcellentlow %></p>
-  <p>Excellent Condition, High Valuation: <%- avmexcellenthigh %></p>
-  <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
-  <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
-  <input class="form-control" type="text" name="email" id="email" placeholder="E-Mail" step="0.01" required>
-  <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
-  <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-</form>
+<div class="form-container">
+  <h1 id="final-step-header" class="center">Final Step!</h1>
+  <div class="left center">
+    <p>
+      <b>Poor condition range:</b>
+      <br />
+      <%- avmpoorlow %> (low) - <%- avmpoorhigh %> (high)
+    </p>
+    <p>
+      <b>Good condition range:</b>
+      <br />
+      <%- avmgoodlow %> (low) - <%- avmgoodhigh %> (high)
+    </p>
+    <p>
+      <b>Excellent condition range:</b>
+      <br />
+      <%- avmexcellentlow %> (low) - <%- avmexcellenthigh %> (high)
+    </p>
+    <div id="map"></div>
+  </div>
+  <div class="right">
+    <h2 id="final-step-form-header" class="center">Your contact info:</h2>
+    <form id="final-step" class="center" action="/leads/new" method="POST">
+      <input class="form-control" type="text" name="firstName" id="firstName" placeholder="First Name">
+      <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Last Name" required>
+      <input class="form-control" type="text" name="email" id="email" placeholder="E-Mail" step="0.01" required>
+      <input class="form-control" type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+      <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+    </form>
+  </div>
+</div>
 
 <% include ../partials/footer %>
 
 <style media="screen">
-  #final-step {
-    color: black;
-    text-align: center;
-    width: 40%;
-    margin: auto;
-    margin-top: 75px;
-    margin-bottom: 75px;
+  #final-step-header {
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
-</style>
+  .center {
+    text-align: center;
+  }
+  .form-container {
+    width: 80%;
+    height: 550px;
+    color: black;
+    margin: auto;
+  }
+  @media (max-width: 600px) {
+    .form-container {
+      margin-bottom: 160px;
+    }
+  }
+    @media (min-width: 600px) {
+      .left {
+        width: 50%;
+        float: left;
+      }
+
+      .right {
+        width: 50%;
+        float: right;
+      }
+    }
+
+    #final-step {
+      color: black;
+      width: 60%;
+      margin: auto;
+    }
+  </style>
+
+  <script>
+    function initMap () {
+      console.log('test1');
+      var lat = <%= lat %>;
+      var lng = <%= lng %>;
+      var center = {lat: lat, lng: lng };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: true,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      });
+      console.log('test2');
+      var contentString = `
+      <strong><%= lat %><br />
+        <%= lng %></strong>
+        <p><%= lng %></p>
+        `
+        console.log('test3');
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        var marker = new google.maps.Marker({
+          position: center,
+          map: map
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      }
+      console.log('test4');
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvIOYOAw4iI_j7PC-Gujb7YC1IOQoqYtw&callback=initMap"></script>
