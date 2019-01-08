@@ -1,0 +1,6 @@
+show address
+show map
+clean routes
+convert number to money
+
+cleaner thank you page

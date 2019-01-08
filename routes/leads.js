@@ -3,6 +3,7 @@ var router = express.Router();
 var Lead = require("../models/lead");
 var middleware = require("../middleware");
 var request = require("request");
+var numeral = require('numeral');
 var { isLoggedIn, checkUserLead, checkUserComment, isAdmin, isSafe } = middleware; // destructuring assignment
 
 // Define escapeRegex function for search feature
@@ -65,7 +66,6 @@ router.post("/newsletter-signup", function(req, res) {
   });
 });
 
-
 router.post("/new", isSafe, function(req, res) {
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
@@ -100,26 +100,26 @@ router.post("/new", isSafe, function(req, res) {
   });
 
   var options = { method: 'POST',
-    url: 'https://api.sendgrid.com/v3/mail/send',
-    headers: {
-      Authorization: 'Bearer ' + process.env.SENDGRID,
-      'Content-Type': 'application/json'
-    },
-    body:
-     { personalizations:
-        [ { to: [ { email: email } ],
-            subject: 'We are reviewing your property.' } ],
-       from: { email: 'support@housessoldeasily.com' },
-       content:
-        [ { type: 'text/plain',
-            value: 'We have received your request for an offer on your property. We are currently evaluating the property and we will get back to you soon. Most people receive a response within 24 hours.' } ] },
+  url: 'https://api.sendgrid.com/v3/mail/send',
+  headers: {
+    Authorization: 'Bearer ' + process.env.SENDGRID,
+    'Content-Type': 'application/json'
+  },
+  body:
+  { personalizations:
+    [ { to: [ { email: email } ],
+    subject: 'We are reviewing your property.' } ],
+    from: { email: 'support@housessoldeasily.com' },
+    content:
+    [ { type: 'text/plain',
+    value: 'We have received your request for an offer on your property. We are currently evaluating the property and we will get back to you soon. Most people receive a response within 24 hours.' } ] },
     json: true };
 
-  request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
 
-    console.log(body);
-  });
+      console.log(body);
+    });
 
     Lead.create(newLead, function(err, newlyCreated) {
       if (err) {
@@ -131,13 +131,14 @@ router.post("/new", isSafe, function(req, res) {
   });
 
   router.post("/final-step", function(req, res) {
-    var address = req.body.address.split(/,(.+)/)[0];
+    var streetAddress = req.body.address.split(/,(.+)/)[0];
     var citystatezip = req.body.address.split(/,(.+)/)[1];
+    var fullAddress = streetAddress + citystatezip;
     var attomOptions = {
       method: 'GET',
       url: 'https://search.onboard-apis.com/propertyapi/v1.0.0/allevents/detail',
       qs: {
-        address1: address,
+        address1: streetAddress,
         address2: citystatezip
       },
       headers: {
@@ -145,19 +146,24 @@ router.post("/new", isSafe, function(req, res) {
         apikey: process.env.ATTOM
       }
     };
+
+
     request(attomOptions, function (error, response, body) {
       if (error) console.log(error);
       var data = JSON.parse(body).property[0];
+      var zipCode = data.address.postal1;
+      fullAddress= fullAddress + " " + zipCode;
       var avm = data.avm;
-      var avmpoorlow = JSON.stringify(avm.condition.avmpoorlow);
-      var avmpoorhigh = JSON.stringify(avm.condition.avmpoorhigh);
-      var avmgoodlow = JSON.stringify(avm.condition.avmgoodlow);
-      var avmgoodhigh = JSON.stringify(avm.condition.avmgoodhigh);
-      var avmexcellentlow = JSON.stringify(avm.condition.avmexcellentlow);
-      var avmexcellenthigh = JSON.stringify(avm.condition.avmexcellenthigh);
+      var avmpoorlow = numeral(JSON.stringify(avm.condition.avmpoorlow)).format('$0,0.00');
+      var avmpoorhigh = numeral(JSON.stringify(avm.condition.avmpoorhigh)).format('$0,0.00');
+      var avmgoodlow = numeral(JSON.stringify(avm.condition.avmgoodlow)).format('$0,0.00');
+      var avmgoodhigh = numeral(JSON.stringify(avm.condition.avmgoodhigh)).format('$0,0.00');
+      var avmexcellentlow = numeral(JSON.stringify(avm.condition.avmexcellentlow)).format('$0,0.00');
+      var avmexcellenthigh = numeral(JSON.stringify(avm.condition.avmexcellenthigh)).format('$0,0.00');
       var lat = data.location.latitude;
       var lng = data.location.longitude;
       res.render("leads/final-step", {
+        fullAddress: fullAddress,
         avmpoorlow: avmpoorlow,
         avmpoorhigh: avmpoorhigh,
         avmgoodlow: avmgoodlow,
