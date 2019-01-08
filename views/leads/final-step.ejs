@@ -3,22 +3,36 @@
   <h1 id="final-step-header" class="center">Final Step!</h1>
   <div class="left center">
     <h4><%- fullAddress %></h4>
-    <p>
-      <b>Poor condition range:</b>
-      <br />
-      <%- avmpoorlow %> (low) - <%- avmpoorhigh %> (high)
-    </p>
-    <p>
-      <b>Good condition range:</b>
-      <br />
-      <%- avmgoodlow %> (low) - <%- avmgoodhigh %> (high)
-    </p>
-    <p>
-      <b>Excellent condition range:</b>
-      <br />
-      <%- avmexcellentlow %> (low) - <%- avmexcellenthigh %> (high)
-    </p>
     <div id="map"></div>
+    <div class="left">
+      <p>
+        <b>Last Sold Date:</b>
+        <br />
+        <%- saleDate %>
+      </p>
+      <p>
+        <b>Last Sold Price:</b>
+        <br />
+        <%- saleAmount %>
+      </p>
+    </div>
+    <div class="right">
+      <p>
+        <b>Poor condition range:</b>
+        <br />
+        <%- avmpoorlow %> (low) - <%- avmpoorhigh %> (high)
+      </p>
+      <p>
+        <b>Good condition range:</b>
+        <br />
+        <%- avmgoodlow %> (low) - <%- avmgoodhigh %> (high)
+      </p>
+      <p>
+        <b>Excellent condition range:</b>
+        <br />
+        <%- avmexcellentlow %> (low) - <%- avmexcellenthigh %> (high)
+      </p>
+    </div>
   </div>
   <div class="right">
     <h2 id="final-step-form-header" class="center">Your contact info:</h2>
@@ -35,6 +49,14 @@
 <% include ../partials/footer %>
 
 <style media="screen">
+  .left {
+    width: 50%;
+    float: left;
+  }
+  .right {
+    width: 50%;
+    float: right;
+  }
   #final-step-header {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -44,7 +66,7 @@
   }
   .form-container {
     width: 80%;
-    height: 550px;
+    height: 600px;
     color: black;
     margin: auto;
   }
@@ -53,56 +75,50 @@
       margin-bottom: 160px;
     }
   }
-    @media (min-width: 600px) {
-      .left {
-        width: 50%;
-        float: left;
-      }
-
-      .right {
-        width: 50%;
-        float: right;
-      }
+  @media (min-width: 600px) {
+    .left {
+      width: 50%;
+      float: left;
     }
-
-    #final-step {
-      color: black;
-      width: 60%;
-      margin: auto;
+    .right {
+      width: 50%;
+      float: right;
     }
-  </style>
-
-  <script>
-    function initMap () {
-      console.log('test1');
-      var lat = <%= lat %>;
-      var lng = <%= lng %>;
-      var center = {lat: lat, lng: lng };
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+  }
+  #final-step {
+    color: black;
+    width: 65%;
+    margin: auto;
+  }
+  #map {
+    height: 200px;
+    width: 450px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+</style>
+<script>
+  function initMap() {
+    var lat = <%= lat %>;
+    var lng = <%= lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
         center: center,
-        scrollwheel: true,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-      });
-      console.log('test2');
-      var contentString = `
-      <strong><%= lat %><br />
-        <%= lng %></strong>
-        <p><%= lng %></p>
-        `
-        console.log('test3');
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-        var marker = new google.maps.Marker({
-          position: center,
-          map: map
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-      }
-      console.log('test4');
-    </script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvIOYOAw4iI_j7PC-Gujb7YC1IOQoqYtw&callback=initMap"></script>
+        scrollwheel: false
+    });
+    var contentString = '<%- fullAddress %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvIOYOAw4iI_j7PC-Gujb7YC1IOQoqYtw&callback=initMap"></script>

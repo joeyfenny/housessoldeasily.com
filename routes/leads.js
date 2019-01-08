@@ -152,8 +152,12 @@ router.post("/new", isSafe, function(req, res) {
       if (error) console.log(error);
       var data = JSON.parse(body).property[0];
       var zipCode = data.address.postal1;
-      fullAddress= fullAddress + " " + zipCode;
+      fullAddress= fullAddress.split(', USA')[0] + " " + zipCode;
       var avm = data.avm;
+      var sale = data.sale.amount;
+      var saleDate = sale.salerecdate;
+      var saleAmount = numeral(sale.saleamt).format('$0,0.00');
+      if(saleAmount == "$0.00") saleAmount = "Unknown";
       var avmpoorlow = numeral(JSON.stringify(avm.condition.avmpoorlow)).format('$0,0.00');
       var avmpoorhigh = numeral(JSON.stringify(avm.condition.avmpoorhigh)).format('$0,0.00');
       var avmgoodlow = numeral(JSON.stringify(avm.condition.avmgoodlow)).format('$0,0.00');
@@ -172,6 +176,8 @@ router.post("/new", isSafe, function(req, res) {
         avmexcellenthigh: avmexcellenthigh,
         lat: lat,
         lng: lng,
+        saleDate: saleDate,
+        saleAmount: saleAmount
       });
     });
   });
