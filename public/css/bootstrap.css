@@ -1177,9 +1177,11 @@ pre {
 
   .col-md-6 {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    max-width: 50%; }
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    flex: 0 0 51%;-
+    width: 50%;
+    }
 
   .col-md-7 {
     -webkit-box-flex: 0;
@@ -1359,9 +1361,10 @@ pre {
 
   .col-lg-3 {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
-    max-width: 25%; }
+    -ms-flex: 0 0 25%;
+    flex: 0 0 20%;
+    margin: auto;
+    }
 
   .col-lg-4 {
     -webkit-box-flex: 0;

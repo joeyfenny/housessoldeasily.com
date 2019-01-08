@@ -8626,6 +8626,8 @@ input.border, select.border, textarea.border, .form-block.border .chosen-contain
         -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
         order: 1;
+        margin: auto;
+        padding-right: 100px;
     }
 
     #main-menu ul {
