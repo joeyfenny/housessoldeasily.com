@@ -24,7 +24,7 @@
     "geocoder": "^0.2.3",
     "method-override": "^2.3.5",
     "moment": "^2.22.2",
-    "mongoose": "^4.11.9",
+    "mongoose": "^5.6.11",
     "newrelic": "^4.9.0",
     "numeral": "^2.0.6",
     "passport": "^0.3.0",
