@@ -23,7 +23,7 @@
     "express-session": "^1.15.6",
     "geocoder": "^0.2.3",
     "method-override": "^2.3.5",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "mongoose": "^4.11.9",
     "newrelic": "^4.9.0",
     "numeral": "^2.0.6",
